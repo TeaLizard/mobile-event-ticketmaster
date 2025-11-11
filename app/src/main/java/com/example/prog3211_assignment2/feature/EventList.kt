@@ -80,7 +80,8 @@ fun EventList(padding: PaddingValues, navController: NavController, viewModel: E
             modifier = Modifier.fillMaxWidth(),
             color = MaterialTheme.colorScheme.surface,
             shape = MaterialTheme.shapes.extraLarge,
-            shadowElevation = 4.dp
+            shadowElevation = 4.dp,
+            tonalElevation = 6.dp
         ) {
             LazyColumn(
 

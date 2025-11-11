@@ -32,7 +32,8 @@ fun EventDetails(padding: PaddingValues, navController: NavController, viewModel
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.surface,
-        shadowElevation = 4.dp
+        shadowElevation = 4.dp,
+        tonalElevation = 6.dp
     ) {
         Column(
             modifier = Modifier
