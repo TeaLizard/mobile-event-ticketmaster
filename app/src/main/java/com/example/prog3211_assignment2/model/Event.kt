@@ -14,8 +14,10 @@ data class Event (
     val description: String,
     val price: Double
 )
+// Event data class
 
 val events = listOf(
+    // Event seed data
     Event(1, "Jazz Night", R.drawable.music, "Music", "2025-11-12", "19:00", "Toronto", "Smooth jazz evening with local artists.", 30.0),
     Event(7, "Basketball Showdown", R.drawable.sports, "Sports", "2025-11-13", "14:00", "Toronto", "Local teams compete in a thrilling tournament.", 20.0),
     Event(13, "Photography Masterclass", R.drawable.workshop, "Workshop", "2025-11-12", "10:00", "Toronto", "Learn advanced techniques from pros.", 60.0),

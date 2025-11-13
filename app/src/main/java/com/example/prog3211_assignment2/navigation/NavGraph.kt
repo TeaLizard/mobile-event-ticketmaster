@@ -19,6 +19,9 @@ fun NavGraph(navController: NavHostController, innerPadding: PaddingValues) {
     val viewModel: EventsViewModel = viewModel()
 
     NavHost(navController = navController, startDestination = "list") {
+        // Standard navigation graph
+        // The two composables share a view model so an event does not have to be passed
+        // as it is set in the model instead
         composable("list") {
             EventList(padding, navController, viewModel)
         }

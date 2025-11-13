@@ -23,12 +23,14 @@ import com.example.prog3211_assignment2.ui.model.EventsViewModel
 
 @Composable
 fun EventCard(event: Event, viewModel: EventsViewModel, navController: NavController) {
+    // Event card composable
     Card(
         modifier = Modifier.fillMaxWidth().padding(8.dp)
             .clickable {
                 viewModel.selectEvent(event)
                 navController.navigate("event")
             },
+        // Selects the event clicked on and navigates to EventDetails
         shape = MaterialTheme.shapes.large,
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surfaceVariant,
@@ -39,6 +41,7 @@ fun EventCard(event: Event, viewModel: EventsViewModel, navController: NavContro
         )
     ) {
         Row(
+            // Row set for image on the left and details on the right
             modifier = Modifier.padding(16.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
@@ -46,10 +49,11 @@ fun EventCard(event: Event, viewModel: EventsViewModel, navController: NavContro
                 painter = painterResource(id = event.image),
                 contentDescription = null,
                 modifier = Modifier.weight(1f),
-
+                // Image is weighted to take 1/3 of the row
             )
 
             Column(modifier = Modifier.weight(2f)) {
+                // Details are weighted to take 2/3 of the row
                 Text(text = event.name, style = MaterialTheme.typography.titleLarge)
                 Text(text = event.category)
                 Text(text = event.date)

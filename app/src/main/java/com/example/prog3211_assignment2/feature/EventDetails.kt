@@ -27,9 +27,13 @@ import java.text.NumberFormat
 
 @Composable
 fun EventDetails(padding: PaddingValues, navController: NavController, viewModel: EventsViewModel) {
+    // Details for selected event
+    // No hardcoded strings
     val event = viewModel.selectedEvent ?: return
+    // Event selected from EventList
 
     Surface(
+        // Screen exists on a surface for a nice visual effect
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.surface,
         shadowElevation = 4.dp,
@@ -42,6 +46,7 @@ fun EventDetails(padding: PaddingValues, navController: NavController, viewModel
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
             Card(
+                // Card for image
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(8.dp),
@@ -57,6 +62,7 @@ fun EventDetails(padding: PaddingValues, navController: NavController, viewModel
                 )
             }
 
+            // List of event details
             Text(event.name, style = MaterialTheme.typography.headlineLarge)
             Text(event.category)
             Text(event.date)
@@ -65,17 +71,21 @@ fun EventDetails(padding: PaddingValues, navController: NavController, viewModel
             Text(event.description)
             Spacer(modifier = Modifier.padding(4.dp))
 
+            // Ticket price
             Text(stringResource(R.string.ticket_price_header))
             val price = NumberFormat.getCurrencyInstance().format(event.price)
             Text(price)
 
             Row(
+                // Row for buy and back buttons
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Button(onClick = {}) {
+                    // Unimplemented buy button
                     Text(stringResource(R.string.buy_button))
                 }
                 Button(onClick = { navController.popBackStack() }) {
+                    // Back button uses popBackStack() to avoid a growing call stack
                     Text(stringResource(R.string.back_button))
                 }
             }

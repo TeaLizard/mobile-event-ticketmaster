@@ -37,6 +37,7 @@ fun EventList(padding: PaddingValues, navController: NavController, viewModel: E
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         ExposedDropdownMenuBox(
+            // Location dropdown
             modifier = Modifier.fillMaxWidth(),
             expanded = viewModel.isLocationDropdownExpanded,
             onExpandedChange = { viewModel.toggleLocationDropdown(!viewModel.isLocationDropdownExpanded) }
@@ -45,6 +46,7 @@ fun EventList(padding: PaddingValues, navController: NavController, viewModel: E
                 value = viewModel.selectedLocation,
                 onValueChange = {},
                 readOnly = true,
+                // Readonly to prevent user from typing in dropdown
                 label = { Text(stringResource(R.string.location_header)) },
                 trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = viewModel.isLocationDropdownExpanded) },
                 modifier = Modifier.menuAnchor(type = MenuAnchorType.PrimaryEditable, enabled = true)
@@ -64,6 +66,8 @@ fun EventList(padding: PaddingValues, navController: NavController, viewModel: E
         }
 
         LazyRow(
+            // Lazy row of filter chips
+            // Allows more chips to be added because it is scrolling
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
@@ -77,6 +81,7 @@ fun EventList(padding: PaddingValues, navController: NavController, viewModel: E
         }
 
         Surface(
+            // Surface for list of events
             modifier = Modifier.fillMaxWidth(),
             color = MaterialTheme.colorScheme.surface,
             shape = MaterialTheme.shapes.extraLarge,
@@ -86,6 +91,7 @@ fun EventList(padding: PaddingValues, navController: NavController, viewModel: E
             LazyColumn(
 
             ) {
+                // Lazy column of event cards on top of surface for a nice visual effect
                 items(viewModel.events) { event ->
                     if (viewModel.showEventCheck(event)) {
                         EventCard(event, viewModel, navController)
